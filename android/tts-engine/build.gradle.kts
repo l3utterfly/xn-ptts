@@ -30,6 +30,8 @@ android {
         versionCode = 1
         versionName = workspaceVersion
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        // Match android/build.sh; JNA also bundles ABIs without a TTS native library.
+        ndk { abiFilters += listOf("arm64-v8a", "x86_64") }
     }
     // What android/build.sh writes.
     sourceSets["main"].jniLibs.srcDir("../jniLibs")
